@@ -35,7 +35,6 @@ cat /dev/null > $agent_code
 for index in ${!DEVICE_SRCS[*]}
 do
     echo "Concatenating ${DEVICE_SRCS[$index]} to $device_code"
-    echo $index
     if [ "$index" -gt "0" ] ; then
         echo "Adding header"
         echo "//==================================" >> $device_code
@@ -48,7 +47,6 @@ done
 for index  in ${!AGENT_SRCS[*]}
 do
     echo "Concatenating ${AGENT_SRCS[$index]} to $agent_code"
-    echo $index
     if [ "$index" -gt "0" ] ; then
         echo "Adding header"
         echo "//==================================" >> $agent_code
@@ -58,17 +56,8 @@ do
     cat ${AGENT_SRCS[$index]} >> $agent_code
 done
 
-# Put the date into the file
-#echo -e $BUILD_DATE >> $device_code
-#echo -e $BUILD_DATE >> $agent_code
-
-#agent_raw=`cat $agent_code | openssl enc -base64`
-#device_raw=`cat $device_code | openssl enc -base64`
-
 agent_raw=`cat $agent_code | python -c 'import json,sys; print json.dumps(sys.stdin.read())'`
 device_raw=`cat $device_code | python -c 'import json,sys; print json.dumps(sys.stdin.read())'`
-
-//echo $agent_raw
 
 echo "Attempting to commit source to IMP cloud IDE..."
 # To POST code to the server
@@ -77,7 +66,11 @@ resp=`curl -X POST -H "Authorization: Basic $IMP_KEY" \
 "{\"agent_code\":$agent_raw,\"device_code\":$device_raw}" \
 https://build.electricimp.com/v4/models/$IMP_MODEL/revisions`
 
-#echo -e $resp
 
 echo "$resp" | python -m json.tool
 
+# @TODO: Restart if successful
+#if grep -q "\"success\": true" <<< $resp; 
+echo "Build successful!! Restarting IMP!" && \
+curl -k -X POST -H "Authorization: Basic $IMP_KEY" \
+https://build.electricimp.com/v4/models/$IMP_MODEL/restart
