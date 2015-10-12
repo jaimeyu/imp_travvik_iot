@@ -1,3 +1,21 @@
+/*
+    Copyright (C) 2015 Jaime Yu <jaime@jaimeyu.com
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License\n
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
 // Bosch 180 class from https://gist.github.com/feesta/926869ea3e3d373ca76c
 // My fork @ https://gist.github.com/jaimeyu/62a3292a703e50689888
 // TODO: Fix any bugs as a thank you for the ground work?
