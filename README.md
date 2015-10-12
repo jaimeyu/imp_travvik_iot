@@ -24,6 +24,3 @@
     ----------------------------------------------------------------- 
 
 https://freeboard.io/board/rZI0R0
-
-
-https://agent.electricimp.com/xSirVUNJmWOy?update_now=1
