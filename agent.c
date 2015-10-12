@@ -1,7 +1,7 @@
 #require "Dweetio.class.nut:1.0.0"
 // NOTE! Requires MUST be the first line of the file. 
 /*
-    Copyright (C) 2015 Jaime Yu <jaime@jaimeyu.com
+    Copyright (C) 2015 Jaime Yu <jaime@jaimeyu.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (C) 2015 Jaime Yu <jaime@jaimeyu.com
+# Copyright (C) 2015 Jaime Yu <jaime@jaimeyu.com>
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,6 +15,10 @@
 # You should have received a copy of the GNU General Public License\n
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Custom 3rd party modules are a pain to work with in the stock IMP IDE
+# Make sure the list is in order of dependencies!
+DEVICE_SRCS=(bmp180.c device.c)
+AGENT_SRCS=(agent.c)
 
 # Get the IMP KEY
 IMP_KEY="`cat ./IMP_BUILD_KEY | openssl enc -base64`"
@@ -39,10 +43,6 @@ curl -X GET -H "Authorization: Basic $IMP_KEY" $URL$DEVICE_ARGS
 # Copyright
 BUILD_DATE="//    Built `date` on `hostname`\n//    git hash:`git rev-parse HEAD` \n"
 
-# Custom 3rd party modules are a pain to work with in the stock IMP IDE
-# Make sure the list is in order of dependencies!
-DEVICE_SRCS=(bmp180.c device.c)
-AGENT_SRCS=(agent.c)
 
 # Create a tmp file
 cat /dev/null > $device_code
